@@ -25,6 +25,24 @@ public class ItemsMapperImpl implements ItemsMapper
                  " ORDER BY id DESC ";
 
     return JdbcTemplate.query(sql, new BeanPropertyRowMapper(ItemsModel.class));
+      
+//    Setencias sql para actualizar, insertar y borrar
+//    String sql = " UPDATE items "
+//    		+ "SET nombre='aaaaa', descripcion='aaaaaaaaa', url='aaa'" +
+//    " WHERE id=2 ";
+//    
+//    sql = " INSERT INTO items "
+//    		+ "(nombre, descripcion, url)"
+//    		+ "VALUES ('bvhjmnmn', 'ssssssss', 'zazazaza')";
+//    
+//    sql = " DELETE FROM items";
+
+JdbcTemplate.update(sql);
+    
+    System.out.println(sql);
+    
+return null;
+    
   }
 
 
