@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.springboot.app.persistence.models.ItemsModel;
 import java.text.Normalizer;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -48,15 +49,22 @@ public class ItemsServiceImpl implements ItemsService
    */
   private List<ItemsModel> replaceSearch(ItemsModel obj, List<ItemsModel> x)
   {
+	  
+	  List<ItemsModel> listaFiltrada = new ArrayList<ItemsModel>();
+	  
     for (ItemsModel item : x)
     {
+    	if (obj == item) {
+			
+    		listaFiltrada.add(item);
+		}
       item.setNombre(this.replaceStr(obj.getNombre(), item.getNombre()));
 
       item.setDescripcion(this.replaceStr(obj.getDescripcion(),
                                           item.getDescripcion()));
     }
 
-    return x;
+    return listaFiltrada;
   }
 
 
